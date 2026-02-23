@@ -73,9 +73,6 @@ sketchybar --default "${default[@]}"
 
 sketchybar --add item clock right \
            --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
-           --add item audio_device right \
-           --set audio_device update_freq=2 script="$PLUGIN_DIR/audio_device.sh" \
-           --subscribe audio_device audio_device_click \
            --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" \
            --subscribe volume volume_change \
