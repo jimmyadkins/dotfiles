@@ -65,3 +65,14 @@ vim.keymap.set('n', '<leader>-', ':split<CR>', { silent = true, desc = 'Horizont
 
 -- Vertical split with <leader>|
 vim.keymap.set('n', '<leader>|', ':vsplit<CR>', { silent = true, desc = 'Vertical split' })
+
+-- Reload config with <leader>rc
+vim.keymap.set('n', '<leader>rc', function()
+  for name, _ in pairs(package.loaded) do
+    if name:match('^custom') or name:match('^kickstart') then
+      package.loaded[name] = nil
+    end
+  end
+  dofile(vim.env.MYVIMRC)
+  vim.notify('Config reloaded', vim.log.levels.INFO)
+end, { desc = '[R]eload [C]onfig' })
