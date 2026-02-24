@@ -1,6 +1,6 @@
 return {
   'sindrets/diffview.nvim',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons' },
   cmd = { 'DiffviewOpen', 'DiffviewClose', 'DiffviewToggleFiles', 'DiffviewFocusFiles', 'DiffviewFileHistory' },
   keys = {
     { '<leader>gd', '<cmd>DiffviewOpen<cr>', desc = '[G]it [D]iff View' },
@@ -50,7 +50,7 @@ return {
       view = {
         default = {
           layout = 'diff2_horizontal',
-          winbar_info = false,
+          winbar_info = true,
         },
         merge_tool = {
           layout = 'diff3_horizontal',
@@ -59,7 +59,7 @@ return {
         },
         file_history = {
           layout = 'diff2_horizontal',
-          winbar_info = false,
+          winbar_info = true,
         },
       },
       file_panel = {
