@@ -1,0 +1,5 @@
+[manager]
+prepend_keymap = [
+  { on = "h", run = "hidden toggle", desc = "Toggle hidden files" },
+  { on = ".", run = "", desc = "" },
+]

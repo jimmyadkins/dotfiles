@@ -45,6 +45,8 @@ require('lazy').setup({
 
   require 'kickstart.plugins.neo-tree',
 
+  require 'kickstart.plugins.toggleterm',
+
   require 'custom.plugins.iron',
 
   require 'custom.plugins.git-conflict',
@@ -61,7 +63,7 @@ require('lazy').setup({
 
   require 'custom.plugins.render-markdown',
 
-  require 'custom.plugins.obsidian',
+  -- require 'custom.plugins.obsidian',
 
   require 'custom.plugins.claudecode',
 
@@ -70,6 +72,8 @@ require('lazy').setup({
   require 'custom.plugins.grug-far',
 
   require 'custom.plugins.undodir-tree',
+
+  require 'custom.plugins.diffview',
   -- kThe following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   --
   -- init.lua. If you want these files, they are in the repository, so you can just download them and

@@ -60,6 +60,14 @@ vim.keymap.set('n', '<leader>wl', function()
   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 end, { desc = '[W]orkspace [L]ist Folders' })
 
+-- Tab navigation (analog to tmux session cycling)
+vim.keymap.set('n', '<M-,>', ':tabprev<CR>', { silent = true, desc = 'Previous tab' })
+vim.keymap.set('n', '<M-.>', ':tabnext<CR>', { silent = true, desc = 'Next tab' })
+
+-- Tab management
+vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { silent = true, desc = '[T]ab [N]ew' })
+vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { silent = true, desc = '[T]ab [C]lose' })
+
 -- Horizontal split with <leader>-
 vim.keymap.set('n', '<leader>-', ':split<CR>', { silent = true, desc = 'Horizontal split' })
 

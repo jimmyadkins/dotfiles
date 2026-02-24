@@ -6,19 +6,19 @@ return {
   version = '*',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-    'MunifTanjim/nui.nvim',
+'MunifTanjim/nui.nvim',
   },
   lazy = false,
   keys = {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
+    use_icons = false,
     filesystem = {
       window = {
         mappings = {
           ['\\'] = 'close_window',
-          ['.'] = 'toggle_hidden',
+          ['.'] = 'set_root',
         },
       },
     },
