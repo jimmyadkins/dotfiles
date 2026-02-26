@@ -72,16 +72,8 @@ sketchybar --default "${default[@]}"
 # https://felixkratz.github.io/SketchyBar/config/events
 
 sketchybar --add item clock right \
-           --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
+           --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
            --set clock click_script="open -a 'Notion Calendar'" \
-           --add item audio_device right \
-           --set audio_device script="$PLUGIN_DIR/audio_device.sh" \
-                         update_freq=30 \
-                         popup.background.color=0xdd1e1e2e \
-                         popup.background.corner_radius=8 \
-                         popup.background.border_width=1 \
-                         popup.background.border_color=0x44ffffff \
-           --subscribe audio_device volume_change mouse.clicked mouse.exited.global \
            --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" \
            --subscribe volume volume_change \
@@ -96,6 +88,16 @@ sketchybar --add item clock right \
            --set wifi update_freq=5 script="$PLUGIN_DIR/wifi.sh" \
            --subscribe wifi wifi_change system_woke
 
+# Audio input/output widget (disabled)
+# sketchybar --add item audio_device right \
+#            --set audio_device script="$PLUGIN_DIR/audio_device.sh" \
+#                          update_freq=30 \
+#                          popup.background.color=0xdd1e1e2e \
+#                          popup.background.corner_radius=8 \
+#                          popup.background.border_width=1 \
+#                          popup.background.border_color=0x44ffffff \
+#            --subscribe audio_device volume_change mouse.clicked mouse.exited.global
+
 
 
 # sketchybar --add item timetrap center \
@@ -104,7 +106,7 @@ sketchybar --add item clock right \
 #                           label.padding_left=10 \
 #                           label.padding_right=10 \
 #                           # background.color=0xff000000 \
-#                           icon=  # Optional: Timer icon (from Hack Nerd Font)
+#                           icon=  # Optional: Timer icon (from Hack Nerd Font)
 #                           icon.padding_right=5 \
 #
 
