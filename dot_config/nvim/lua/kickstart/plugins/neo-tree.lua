@@ -14,7 +14,28 @@ return {
   },
   opts = {
     use_icons = false,
+    git_status_async = true,
+    sources = { 'filesystem', 'git_status' },
+    default_component_configs = {
+      git_status = {
+        symbols = {
+          added     = 'A',
+          modified  = 'M',
+          deleted   = 'D',
+          renamed   = 'R',
+          untracked = '?',
+          ignored   = 'I',
+          unstaged  = 'U',
+          staged    = 'S',
+          conflict  = 'C',
+        },
+      },
+    },
     filesystem = {
+      use_libuv_file_watcher = true,
+      filtered_items = {
+        hide_gitignored = false,
+      },
       window = {
         mappings = {
           ['\\'] = 'close_window',

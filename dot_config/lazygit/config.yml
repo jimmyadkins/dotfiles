@@ -1,0 +1,10 @@
+gui:
+  showBottomLine: false
+  showCommandLog: false
+  showFileTree: true
+  showIcons: true
+  nerdFontsVersion: "3"
+
+os:
+  editPreset: "nvim-remote"
+  copyToClipboardCmd: "tmux load-buffer -"

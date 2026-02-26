@@ -7,7 +7,7 @@
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -100,5 +100,11 @@ end
 local dim_group = vim.api.nvim_create_augroup('TmuxDim', { clear = true })
 vim.api.nvim_create_autocmd('FocusLost', { group = dim_group, callback = dim_pane })
 vim.api.nvim_create_autocmd('FocusGained', { group = dim_group, callback = undim_pane })
+
+-- Auto-reload buffers changed on disk (e.g. by Claude Code)
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  command = 'checktime',
+})
 
 -- vim: ts=2 sts=2 sw=2 et

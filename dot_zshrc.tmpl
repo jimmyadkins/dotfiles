@@ -5,6 +5,11 @@
 # ──────── PATH ────────
 export PATH="$HOME/.local/bin:$PATH"
 
+# ──────── XDG Base Dirs ────────
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+
 # ──────── History ────────
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
@@ -50,6 +55,10 @@ fi
 alias v="nvim"
 alias lg="lazygit"
 alias cl="clear"
+alias c="claude"
+alias ep="v ~/.zshrc"
+alias sp="source ~/.zshrc"
+alias q="exit"
 
 # Enhanced ls (if available)
 command -v lsd &> /dev/null && alias ls="lsd -ltg"
@@ -122,6 +131,11 @@ ff() {
 # ┌─────────────────────────────────────────┐
 # │ 9. Prompt & Additional Tools            │
 # └─────────────────────────────────────────┘
+
+# Vi mode
+if [[ -f $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh ]]; then
+  source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+fi
 
 # Starship prompt (load near end)
 if command -v starship &> /dev/null; then
