@@ -27,8 +27,9 @@ gui:
   authorColors:
     '*': '#b7bdf8'
 git:
-  paging:
-    externalDiffCommand: difft
+  pagers:
+    - colorArg: always
+      externalDiffCommand: difft --color=always
 os:
   editPreset: "nvim-remote"
-  copyToClipboardCmd: "tmux load-buffer -"
+  copyToClipboardCmd: "echo -n '{{text}}' | pbcopy"
