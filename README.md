@@ -5,7 +5,7 @@ Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/). Targets macOS
 ## Setup
 
 ```sh
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply daltongarrettpayne
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply jimmyadkins
 ```
 
 Then install packages:
@@ -39,7 +39,7 @@ Chezmoi templates branch on `.machineType` (`personal` or `work`):
 Set on init:
 
 ```sh
-chezmoi init --apply daltongarrettpayne
+chezmoi init --apply jimmyadkins
 # chezmoi will prompt for machineType
 ```
 
