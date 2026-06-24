@@ -1,24 +1,30 @@
 #!/bin/bash
 
-# Check for OpenVPN Connect connections
-OPENVPN_RUNNING=$(pgrep -x "OpenVPN Connect" > /dev/null && echo "yes" || echo "no")
-OPENVPN_CONNECTED=$(ifconfig | grep -A 1 "utun" | grep "inet " | grep -v "inet6" | head -n 1)
+# Tailscale status indicator.
+# sketchybar's PATH is minimal, so locate the CLI explicitly.
+TAILSCALE=""
+for candidate in /opt/homebrew/bin/tailscale /usr/local/bin/tailscale /Applications/Tailscale.app/Contents/MacOS/Tailscale; do
+  if [[ -x "$candidate" ]]; then
+    TAILSCALE="$candidate"
+    break
+  fi
+done
 
-# Check for native macOS VPN connections
-NATIVE_VPN=$(scutil --nc list | grep Connected)
+# BackendState is a single top-level field: Running, Stopped, NeedsLogin, NoState...
+BACKEND_STATE=""
+if [[ -n "$TAILSCALE" ]]; then
+  BACKEND_STATE=$("$TAILSCALE" status --json 2>/dev/null \
+    | grep -o '"BackendState"[^,]*' \
+    | head -n 1 \
+    | sed -E 's/.*: *"([^"]*)".*/\1/')
+fi
 
-if [[ -n "$OPENVPN_CONNECTED" && "$OPENVPN_RUNNING" == "yes" ]]; then
-  # OpenVPN is connected
-  VPN_IP=$(echo "$OPENVPN_CONNECTED" | awk '{print $2}')
+if [[ "$BACKEND_STATE" == "Running" ]]; then
+  # Connected to the tailnet
   ICON="󰦝"  # VPN connected icon
-  LABEL="OpenVPN"
-elif [[ -n "$NATIVE_VPN" ]]; then
-  # Native VPN is connected
-  VPN_NAME=$(echo "$NATIVE_VPN" | sed -E 's/.*"(.*)".*/\1/')
-  ICON="󰦝"  # VPN connected icon
-  LABEL="$VPN_NAME"
+  LABEL="Tailscale"
 else
-  # No VPN connected
+  # Stopped, NeedsLogin, not installed, or daemon unreachable
   ICON="󰦜"  # VPN disconnected icon
   LABEL=""
 fi
