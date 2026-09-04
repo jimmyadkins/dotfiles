@@ -72,20 +72,20 @@ sketchybar --default "${default[@]}"
 # https://felixkratz.github.io/SketchyBar/config/events
 
 sketchybar --add item clock right \
-           --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
+           --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" display=1 \
            --set clock click_script="open -a 'Notion Calendar'" \
            --add item volume right \
-           --set volume script="$PLUGIN_DIR/volume.sh" \
+           --set volume script="$PLUGIN_DIR/volume.sh" display=1 \
            --subscribe volume volume_change \
            --add item battery right \
-           --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+           --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" display=1 \
            --subscribe battery system_woke power_source_change \
            --add item vpn left \
-           --set vpn update_freq=5 script="$PLUGIN_DIR/vpn.sh" \
+           --set vpn update_freq=5 script="$PLUGIN_DIR/vpn.sh" display=1 \
            --add item network left \
-           --set network update_freq=2 script="$PLUGIN_DIR/network.sh" \
+           --set network update_freq=2 script="$PLUGIN_DIR/network.sh" display=1 \
            --add item wifi left \
-           --set wifi update_freq=5 script="$PLUGIN_DIR/wifi.sh" \
+           --set wifi update_freq=5 script="$PLUGIN_DIR/wifi.sh" display=1 \
            --subscribe wifi wifi_change system_woke
 
 # Audio input/output widget (disabled)

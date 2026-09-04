@@ -5,6 +5,9 @@
 # ──────── PATH ────────
 export PATH="$HOME/.local/bin:$PATH"
 
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # ──────── XDG Base Dirs ────────
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -22,7 +25,9 @@ fi
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if command -v pyenv &> /dev/null; then
+  eval "$(pyenv init -)"
+fi
 
 # ┌─────────────────────────────────────────┐
 # │ 4. Completion System                    │
@@ -147,6 +152,11 @@ fi
 # Envman environment manager (if installed)
 if [[ -s "$HOME/.config/envman/load.sh" ]]; then
   source "$HOME/.config/envman/load.sh"
+fi
+
+# Local secrets (not tracked by chezmoi)
+if [[ -f "$HOME/.secrets.env" ]]; then
+  source "$HOME/.secrets.env"
 fi
 
 # ┌─────────────────────────────────────────┐
