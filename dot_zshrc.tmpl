@@ -5,8 +5,10 @@
 # ──────── PATH ────────
 export PATH="$HOME/.local/bin:$PATH"
 
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Homebrew (macOS only — guard so Linux boxes do not error on every login)
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # ──────── XDG Base Dirs ────────
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -139,9 +141,12 @@ ff() {
 # │ 9. Prompt & Additional Tools            │
 # └─────────────────────────────────────────┘
 
-# Vi mode
-if [[ -f $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh ]]; then
-  source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# Vi mode. NB: $(brew --prefix) is evaluated BEFORE the -f test, so the outer
+# `if` does not protect it — brew must be checked separately.
+if command -v brew &> /dev/null; then
+  _zvm="$(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+  [[ -f "$_zvm" ]] && source "$_zvm"
+  unset _zvm
 fi
 
 # Starship prompt (load near end)

@@ -1,2 +1,13 @@
 # lazy.nvim lockfile — auto-updated by neovim, not managed by chezmoi
 dot_config/nvim/lazy-lock.json
+
+{{- if ne .chezmoi.os "darwin" }}
+# ──────── macOS-only, skipped on Linux/headless boxes ────────
+# These configure macOS GUI software that does not exist elsewhere. Deploying
+# them to a headless box (e.g. the KVM workstation) is inert but noisy.
+# Paths here are TARGET paths, relative to $HOME.
+.Brewfile
+.config/aerospace
+.config/sketchybar
+.config/wezterm
+{{- end }}
