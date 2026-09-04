@@ -27,6 +27,16 @@ config.set_environment_variables = {
 	VISUAL = "nvim",
 }
 
+-- Explicit key bindings
+config.keys = {
+	-- Ensure Cmd+V always does a real paste (not a keypress through the terminal stack)
+	{
+		key = "v",
+		mods = "SUPER",
+		action = wezterm.action.PasteFrom("Clipboard"),
+	},
+}
+
 -- SHIFT+Click to open links (bypasses tmux mouse grab)
 config.mouse_bindings = {
 	{
