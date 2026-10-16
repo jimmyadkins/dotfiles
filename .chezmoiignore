@@ -7,7 +7,7 @@ dot_config/nvim/lazy-lock.json
 # them to a headless box (e.g. the KVM workstation) is inert but noisy.
 # Paths here are TARGET paths, relative to $HOME.
 .Brewfile
-.config/aerospace
+.config/ghostty
 .config/sketchybar
 .config/wezterm
 {{- end }}

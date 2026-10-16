@@ -22,12 +22,14 @@ brew bundle --file ~/.Brewfile
 | `.gitconfig` | Git | Rebase-on-pull, credential manager |
 | `.Brewfile` | Homebrew | Machine-type conditional installs (`personal` vs `work`) |
 | `.config/nvim/` | Neovim | Kickstart-based config with custom plugins |
-| `.config/aerospace/` | AeroSpace | Tiling WM with sketchybar integration |
-| `.config/sketchybar/` | Sketchybar | macOS status bar |
-| `.config/wezterm/` | WezTerm | Terminal emulator |
+| `.config/sketchybar/` | Sketchybar | macOS status bar with native desktop (Space) indicators |
+| `.config/ghostty/` | Ghostty | Terminal emulator with native tabs and splits |
+| `.config/wezterm/` | WezTerm | Previous terminal emulator |
+| `.config/zellij/` | Zellij | Persistent sessions, mainly on remote hosts |
 | `.config/yazi/` | Yazi | Terminal file manager |
 | `.config/starship/` | Starship | Shell prompt |
 | `.tmux.conf` | tmux | With TPM plugin manager |
+| `run_onchange_after_macos-spaces.sh` | macOS | Fixed desktop order, Option+1–9 to switch desktops |
 
 ## Machine types
 
@@ -53,10 +55,10 @@ Or edit `~/.config/chezmoi/chezmoi.toml` directly:
 ## Key tools
 
 - **Editor**: Neovim (kickstart.nvim base)
-- **Terminal**: WezTerm
-- **Multiplexer**: tmux + TPM
+- **Terminal**: Ghostty
+- **Multiplexer**: Zellij (remote sessions), tmux + TPM
 - **Shell**: Zsh + Starship prompt
-- **WM**: AeroSpace (tiling)
+- **Windows**: native macOS desktops + Rectangle
 - **Status bar**: Sketchybar
 - **File manager**: Yazi
 - **Git TUI**: Lazygit

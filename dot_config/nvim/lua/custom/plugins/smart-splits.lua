@@ -1,23 +1,14 @@
 return {
   'mrjones2014/smart-splits.nvim',
-  lazy = false, -- Must set @pane-is-vim on startup for navigate.sh detection
+  lazy = false, -- Must set @pane-is-vim on startup so tmux's Alt+hjkl bindings can see it
   config = function()
     local splits = require('smart-splits')
 
     splits.setup({
       at_edge = function(ctx)
-        local dir = ctx.direction
-        if ctx.mux then
-          if ctx.mux.current_pane_at_edge(dir) then
-            -- Both nvim and tmux at edge — hand off to aerospace
-            vim.fn.system('aerospace focus ' .. dir)
-          else
-            -- Nvim at edge but tmux has panes — move tmux pane
-            ctx.mux.next_pane(dir)
-          end
-        else
-          -- No mux (not in tmux) — hand off to aerospace
-          vim.fn.system('aerospace focus ' .. dir)
+        -- Nvim at edge: move to the next mux pane if there is one, else stay put
+        if ctx.mux and not ctx.mux.current_pane_at_edge(ctx.direction) then
+          ctx.mux.next_pane(ctx.direction)
         end
       end,
     })

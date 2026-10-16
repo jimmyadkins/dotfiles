@@ -1,0 +1,21 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+# Native Mission Control desktops replace a tiling window manager:
+#   - keep desktops in a fixed order so "Desktop 3" is always the same desktop
+#   - Option+1..9 switches to desktop 1..9 (sketchybar's desktop items send these)
+# Apps are pinned to a desktop from the Dock: right-click > Options > Assign To.
+set -euo pipefail
+
+defaults write com.apple.dock mru-spaces -bool false
+
+# Symbolic hotkey IDs 118-126 are "Switch to Desktop 1-9".
+# parameters = (char code, virtual key code, modifier mask); 524288 = Option.
+keycodes=(18 19 20 21 23 22 26 28 25)
+for i in "${!keycodes[@]}"; do
+  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add "$((118 + i))" \
+    "{ enabled = 1; value = { parameters = (65535, ${keycodes[i]}, 524288); type = standard; }; }"
+done
+
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+killall Dock
+{{ end -}}

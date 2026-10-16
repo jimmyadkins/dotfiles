@@ -1,6 +1,6 @@
 # Tmux Configuration
 
-A minimal, vim-friendly tmux configuration with smart aerospace window manager integration.
+A minimal, vim-friendly tmux configuration with seamless nvim split navigation.
 
 ## Key Features
 
@@ -15,15 +15,15 @@ A minimal, vim-friendly tmux configuration with smart aerospace window manager i
 - **Smart Window Numbering**: Starts at 1, automatically renumbers when windows close
 - **Mouse Support**: Scroll and select with mouse
 
-### 🚀 Aerospace Integration
-- **Unified Navigation**: Alt+hjkl navigates seamlessly across tmux, nvim, and aerospace windows
-- **Smart Detection**: Automatically detects if you're in nvim and routes commands appropriately
-- **No Conflicts**: C-hjkl bindings disabled to prevent interference with aerospace
+### 🚀 Nvim Integration
+- **Unified Navigation**: Alt+hjkl moves across tmux panes and nvim splits
+- **Smart Detection**: smart-splits.nvim sets `@pane-is-vim`, so the key goes to nvim when it's focused
 
 ### 📋 Copy Mode
 - **Vi Keybindings**: Navigate with hjkl, visual mode with `v`, yank with `y`
 - **Smart Yanking**: `y` copies and stays in copy mode, `Enter` copies and exits
-- **System Clipboard**: Automatically copies to macOS clipboard via `pbcopy`
+- **System Clipboard**: Copies via OSC 52 (`set-clipboard on`), so it reaches the local clipboard over ssh/mosh too
+- **Mouse Copy**: Drag-selecting copies on release
 - **Pane Navigation**: C-hjkl works in copy mode to switch panes while selecting
 
 ## Installation
@@ -68,7 +68,7 @@ tmux
 ### Pane Navigation
 | Key | Action |
 |-----|--------|
-| `Alt + h/j/k/l` | Navigate panes (via aerospace) |
+| `Alt + h/j/k/l` | Navigate panes and nvim splits |
 | `C-h/j/k/l` | Navigate in copy mode |
 
 ### Pane Resizing (Repeatable)
@@ -100,9 +100,6 @@ Plugin manager for tmux. Handles installation and updates.
 ### tmux-which-key
 Shows available keybindings in a popup. Press `prefix + ?` to see all bindings.
 
-### tmux-yank
-Enhanced copying and yanking. Configured to stay in copy mode after yanking with `y`.
-
 ## Configuration Structure
 
 The configuration is organized into clear sections:
@@ -112,7 +109,7 @@ The configuration is organized into clear sections:
 3. **Visual Styling**: Colors, borders, status bar
 4. **Keybindings - Prefix Mode**: Traditional tmux bindings requiring prefix
 5. **Keybindings - Root Mode**: Alt-key bindings that work without prefix
-6. **Pane Navigation**: Aerospace integration notes
+6. **Pane Navigation**: Alt+hjkl across tmux panes and nvim splits
 7. **Copy Mode Keybindings**: Vi-style selection and yanking
 8. **Plugins**: Plugin declarations and configuration
 
@@ -145,12 +142,9 @@ prefix + 0-9  # jump to window number
 5. Yank: `y` (stays in copy mode) or `Enter` (exits)
 6. Exit: `q`
 
-### Integration with Aerospace
-This configuration is designed to work seamlessly with [aerospace window manager](https://github.com/nikitabobko/AeroSpace):
-
-- Use `Alt + h/j/k/l` to navigate between aerospace windows, tmux panes, and nvim splits
-- The `navigate.sh` script handles routing the navigation commands appropriately
-- No need to think about whether you're in tmux or aerospace—navigation just works
+### Integration with Neovim
+- Use `Alt + h/j/k/l` to move between tmux panes and nvim splits
+- tmux checks `@pane-is-vim` (set by smart-splits.nvim) and forwards the key to nvim, which hands focus back to tmux at its edge
 
 ## Customization
 
@@ -191,9 +185,10 @@ echo $TERM  # should show xterm-256color or similar
 The configuration sets `escape-time 0` to eliminate delay. If you still experience delay, check if your terminal or shell is adding extra delay.
 
 ### Clipboard Not Working
-On macOS, ensure `pbcopy` is available:
+Copying relies on the outer terminal accepting OSC 52 clipboard writes. Ghostty
+allows it by default (`clipboard-write = allow`); check that tmux has it on:
 ```bash
-which pbcopy  # should return /usr/bin/pbcopy
+tmux show -s set-clipboard  # should print: set-clipboard on
 ```
 
 ## Resources
@@ -201,4 +196,3 @@ which pbcopy  # should return /usr/bin/pbcopy
 - [Tmux Manual](https://man7.org/linux/man-pages/man1/tmux.1.html)
 - [TPM Repository](https://github.com/tmux-plugins/tpm)
 - [tmux-which-key](https://github.com/alexwforsythe/tmux-which-key)
-- [tmux-yank](https://github.com/tmux-plugins/tmux-yank)

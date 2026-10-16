@@ -22,9 +22,10 @@ dot_Brewfile.tmpl           → ~/.Brewfile
 dot_tmux.conf               → ~/.tmux.conf
 dot_tmux/                   → ~/.tmux/
 dot_config/nvim/            → ~/.config/nvim/
-dot_config/aerospace/       → ~/.config/aerospace/
 dot_config/sketchybar/      → ~/.config/sketchybar/
+dot_config/ghostty/         → ~/.config/ghostty/
 dot_config/wezterm/         → ~/.config/wezterm/
+dot_config/zellij/          → ~/.config/zellij/
 dot_config/yazi/            → ~/.config/yazi/
 dot_config/starship/        → ~/.config/starship/
 ```

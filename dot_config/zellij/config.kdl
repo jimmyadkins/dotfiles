@@ -1,0 +1,33 @@
+// Zellij — persistent sessions, mainly on the VM.
+// Starts locked so every key goes to the shell/editor; Ctrl+g unlocks for
+// zellij's own keys (hints show in the status bar). The Alt bindings below
+// work while locked and mirror the tmux ones.
+
+default_mode "locked"
+theme "tokyo-night-dark"
+
+// Mouse selection copies straight to the local clipboard via OSC 52
+copy_on_select true
+
+// Sessions are saved continuously and can be resurrected after a reboot;
+// commands in restored panes wait for Enter before re-running
+session_serialization true
+pane_viewport_serialization true
+
+keybinds {
+    locked {
+        bind "Alt h" { MoveFocusOrTab "Left"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt k" { MoveFocus "Up"; }
+        bind "Alt l" { MoveFocusOrTab "Right"; }
+        bind "Alt |" { NewPane "Right"; }
+        bind "Alt _" { NewPane "Down"; }
+        bind "Alt f" { ToggleFloatingPanes; }
+        bind "Alt s" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+        }
+    }
+}

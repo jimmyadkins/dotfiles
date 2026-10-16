@@ -1,0 +1,33 @@
+# Ghostty — local terminal. Tabs and splits are native (Cmd+T, Cmd+D,
+# Cmd+Shift+D), so selection, scrollback and copy/paste need no multiplexer.
+# Persistent sessions live on the VM (zellij/tmux over ssh or mosh).
+
+theme = TokyoNight Night
+background = #0f0f14
+font-family = JetBrains Mono
+font-style = Bold
+font-size = 16.5
+
+cursor-style = bar
+cursor-style-blink = true
+
+window-padding-x = 3
+window-padding-y = 0
+macos-titlebar-style = tabs
+confirm-close-surface = false
+
+# Reopen windows, tabs and splits (with their directories) after a restart
+window-save-state = always
+
+# Option sends Alt/Meta so Alt+hjkl, Alt+g etc. reach tmux, zellij and nvim
+macos-option-as-alt = true
+
+# Install Ghostty's terminfo on hosts reached via ssh, so TERM=xterm-ghostty
+# works there instead of breaking colors and keys
+shell-integration-features = ssh-terminfo
+
+# Let programs (including ones on remote hosts) set the clipboard via OSC 52
+clipboard-write = allow
+
+env = EDITOR=nvim
+env = VISUAL=nvim

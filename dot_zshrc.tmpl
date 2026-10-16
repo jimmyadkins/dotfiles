@@ -120,23 +120,6 @@ function y() {
   rm -f -- "$tmp"
 }
 
-# ──────── Aerospace window fuzzy finder ────────
-# Use fzf to quickly switch between aerospace windows
-ff() {
-  if ! command -v aerospace &> /dev/null; then
-    echo "Error: aerospace is not installed"
-    return 1
-  fi
-
-  if ! command -v fzf &> /dev/null; then
-    echo "Error: fzf is not installed"
-    return 1
-  fi
-
-  aerospace list-windows --all | \
-    fzf --bind 'enter:execute(aerospace focus --window-id {1})+abort'
-}
-
 # ┌─────────────────────────────────────────┐
 # │ 9. Prompt & Additional Tools            │
 # └─────────────────────────────────────────┘
