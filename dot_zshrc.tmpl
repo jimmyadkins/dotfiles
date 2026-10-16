@@ -152,6 +152,9 @@ if command -v brew &> /dev/null && [[ -d "$(brew --prefix)/opt/libpq/bin" ]]; th
   export PATH="$(brew --prefix)/opt/libpq/bin:$PATH"
 fi
 
+# uv-installed tools (adds ~/.local/bin; written by the uv installer)
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
+
 # ┌─────────────────────────────────────────┐
 # │ End of Configuration                    │
 # └─────────────────────────────────────────┘
