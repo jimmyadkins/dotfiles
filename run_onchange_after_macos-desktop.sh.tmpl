@@ -23,8 +23,10 @@ done
 killall Dock
 
 # Menu bar auto-hides; sketchybar occupies its strip and the menu bar slides
-# over it on hover.
+# over it on hover. The menu bar needs a background ("Show menu bar background"
+# in System Settings), otherwise it is transparent and sketchybar shows through.
 defaults write NSGlobalDomain _HIHideMenuBar -bool true
+defaults write NSGlobalDomain SLSMenuBarUseBlurredAppearance -bool true
 
 # Keep Rectangle-placed windows clear of sketchybar (32px). Notched screens
 # already keep windows out of that strip, so they get no extra gap.

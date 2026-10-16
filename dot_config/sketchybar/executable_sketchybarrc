@@ -11,11 +11,12 @@ ITEM_DIR="$CONFIG_DIR/items"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-# Sits where the macOS menu bar would be. The real menu bar is set to auto-hide
-# and draws above this bar when revealed by moving the pointer to the top edge.
+# Sits where the macOS menu bar would be, below normal windows (topmost=off).
+# The real menu bar auto-hides and draws above this bar when revealed by moving
+# the pointer to the top edge.
 # 32 = the strip beside the notch that macOS keeps windows out of; Rectangle's
 # top gap reserves the same strip on screens without a notch.
-sketchybar --bar position=top height=32 blur_radius=30 color=0x40000000 topmost=window y_offset=0
+sketchybar --bar position=top height=32 blur_radius=30 color=0x40000000 topmost=off y_offset=0
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
