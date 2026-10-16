@@ -1,6 +1,9 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
-# Native Mission Control desktops replace a tiling window manager:
+# Desktop setup: native Mission Control desktops, an auto-hiding menu bar with
+# sketchybar in its place, and Rectangle for window placement.
+#
+# Desktops:
 #   - keep desktops in a fixed order so "Desktop 3" is always the same desktop
 #   - Option+1..9 switches to desktop 1..9 (sketchybar's desktop items send these)
 # Apps are pinned to a desktop from the Dock: right-click > Options > Assign To.
@@ -18,4 +21,16 @@ done
 
 /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 killall Dock
+
+# Menu bar auto-hides; sketchybar occupies its strip and the menu bar slides
+# over it on hover.
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
+
+# Keep Rectangle-placed windows clear of sketchybar (32px). Notched screens
+# already keep windows out of that strip, so they get no extra gap.
+defaults write com.knollsoft.Rectangle screenEdgeGapTop -int 32
+defaults write com.knollsoft.Rectangle screenEdgeGapTopNotch -int 0
+if pgrep -xq Rectangle; then
+  killall Rectangle && sleep 1 && open -a Rectangle
+fi
 {{ end -}}

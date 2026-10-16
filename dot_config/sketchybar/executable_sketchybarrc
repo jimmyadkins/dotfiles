@@ -11,7 +11,11 @@ ITEM_DIR="$CONFIG_DIR/items"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000 topmost=window y_offset=25
+# Sits where the macOS menu bar would be. The real menu bar is set to auto-hide
+# and draws above this bar when revealed by moving the pointer to the top edge.
+# 32 = the strip beside the notch that macOS keeps windows out of; Rectangle's
+# top gap reserves the same strip on screens without a notch.
+sketchybar --bar position=top height=32 blur_radius=30 color=0x40000000 topmost=window y_offset=0
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -36,7 +40,7 @@ sketchybar --default "${default[@]}"
 # Native `space` items track macOS Mission Control desktops directly, so the bar
 # always matches what macOS shows and each item follows its desktop's display.
 # Clicking sends the Option+N "Switch to Desktop N" shortcut set up by
-# run_onchange_after_macos-spaces.sh.
+# run_onchange_after_macos-desktop.sh.
 DESKTOP_KEYCODES=(18 19 20 21 23 22 26 28 25) # key codes for 1-9
 for i in "${!DESKTOP_KEYCODES[@]}"; do
   sid="$((i + 1))"
@@ -52,7 +56,7 @@ for i in "${!DESKTOP_KEYCODES[@]}"; do
     script="$PLUGIN_DIR/space.sh"
     click_script="osascript -e 'tell application \"System Events\" to key code ${DESKTOP_KEYCODES[i]} using option down'"
   )
-  sketchybar --add space space."$sid" center \
+  sketchybar --add space space."$sid" left \
              --set space."$sid" "${space[@]}" \
              --subscribe space."$sid" space_windows_change
 done

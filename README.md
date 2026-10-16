@@ -28,7 +28,7 @@ brew bundle --file ~/.Brewfile
 | `.config/yazi/` | Yazi | Terminal file manager |
 | `.config/starship/` | Starship | Shell prompt |
 | `.tmux.conf` | tmux | With TPM plugin manager |
-| `run_onchange_after_macos-spaces.sh` | macOS | Fixed desktop order, Option+1–9 to switch desktops |
+| `run_onchange_after_macos-desktop.sh` | macOS | Fixed desktop order, Option+1–9 desktop switching, auto-hide menu bar, Rectangle gaps |
 
 ## Machine types
 
