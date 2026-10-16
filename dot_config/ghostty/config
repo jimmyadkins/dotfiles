@@ -19,7 +19,7 @@ confirm-close-surface = false
 # Reopen windows, tabs and splits (with their directories) after a restart
 window-save-state = always
 
-# Option sends Alt/Meta so Alt+hjkl, Alt+g etc. reach tmux, zellij and nvim
+# Option sends Alt/Meta so Alt+hjkl, Alt+g etc. reach tmux and zellij
 macos-option-as-alt = true
 
 # Install Ghostty's terminfo on hosts reached via ssh, so TERM=xterm-ghostty
@@ -29,5 +29,5 @@ shell-integration-features = ssh-terminfo
 # Let programs (including ones on remote hosts) set the clipboard via OSC 52
 clipboard-write = allow
 
-env = EDITOR=nvim
-env = VISUAL=nvim
+env = EDITOR=zed --wait
+env = VISUAL=zed --wait

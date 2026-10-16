@@ -1,6 +1,6 @@
 # Tmux Configuration
 
-A minimal, vim-friendly tmux configuration with seamless nvim split navigation.
+A minimal tmux configuration with vi-style copy mode and Alt-key bindings.
 
 ## Key Features
 
@@ -15,9 +15,8 @@ A minimal, vim-friendly tmux configuration with seamless nvim split navigation.
 - **Smart Window Numbering**: Starts at 1, automatically renumbers when windows close
 - **Mouse Support**: Scroll and select with mouse
 
-### 🚀 Nvim Integration
-- **Unified Navigation**: Alt+hjkl moves across tmux panes and nvim splits
-- **Smart Detection**: smart-splits.nvim sets `@pane-is-vim`, so the key goes to nvim when it's focused
+### 🚀 Navigation
+- **No-prefix Navigation**: Alt+hjkl moves between panes
 
 ### 📋 Copy Mode
 - **Vi Keybindings**: Navigate with hjkl, visual mode with `v`, yank with `y`
@@ -68,7 +67,7 @@ tmux
 ### Pane Navigation
 | Key | Action |
 |-----|--------|
-| `Alt + h/j/k/l` | Navigate panes and nvim splits |
+| `Alt + h/j/k/l` | Navigate panes |
 | `C-h/j/k/l` | Navigate in copy mode |
 
 ### Pane Resizing (Repeatable)
@@ -109,7 +108,7 @@ The configuration is organized into clear sections:
 3. **Visual Styling**: Colors, borders, status bar
 4. **Keybindings - Prefix Mode**: Traditional tmux bindings requiring prefix
 5. **Keybindings - Root Mode**: Alt-key bindings that work without prefix
-6. **Pane Navigation**: Alt+hjkl across tmux panes and nvim splits
+6. **Pane Navigation**: Alt+hjkl between panes
 7. **Copy Mode Keybindings**: Vi-style selection and yanking
 8. **Plugins**: Plugin declarations and configuration
 
@@ -141,10 +140,6 @@ prefix + 0-9  # jump to window number
 4. Extend selection with vi motions
 5. Yank: `y` (stays in copy mode) or `Enter` (exits)
 6. Exit: `q`
-
-### Integration with Neovim
-- Use `Alt + h/j/k/l` to move between tmux panes and nvim splits
-- tmux checks `@pane-is-vim` (set by smart-splits.nvim) and forwards the key to nvim, which hands focus back to tmux at its edge
 
 ## Customization
 

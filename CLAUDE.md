@@ -21,7 +21,6 @@ dot_gitconfig.tmpl          → ~/.gitconfig
 dot_Brewfile.tmpl           → ~/.Brewfile
 dot_tmux.conf               → ~/.tmux.conf
 dot_tmux/                   → ~/.tmux/
-dot_config/nvim/            → ~/.config/nvim/
 dot_config/sketchybar/      → ~/.config/sketchybar/
 dot_config/ghostty/         → ~/.config/ghostty/
 dot_config/wezterm/         → ~/.config/wezterm/

@@ -1,6 +1,6 @@
 # dotfiles
 
-Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/). Targets macOS with a tiling WM setup built around Neovim.
+Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/). Targets macOS, with long-running work on a remote Linux VM.
 
 ## Setup
 
@@ -21,7 +21,6 @@ brew bundle --file ~/.Brewfile
 | `.zshrc` | Zsh | Minimal config with autosuggestions, syntax highlighting, zsh-vi-mode |
 | `.gitconfig` | Git | Rebase-on-pull, credential manager |
 | `.Brewfile` | Homebrew | Machine-type conditional installs (`personal` vs `work`) |
-| `.config/nvim/` | Neovim | Kickstart-based config with custom plugins |
 | `.config/sketchybar/` | Sketchybar | macOS status bar with native desktop (Space) indicators |
 | `.config/ghostty/` | Ghostty | Terminal emulator with native tabs and splits |
 | `.config/wezterm/` | WezTerm | Previous terminal emulator |
@@ -54,7 +53,7 @@ Or edit `~/.config/chezmoi/chezmoi.toml` directly:
 
 ## Key tools
 
-- **Editor**: Neovim (kickstart.nvim base)
+- **Editor**: Zed (remote projects over SSH)
 - **Terminal**: Ghostty
 - **Multiplexer**: Zellij (remote sessions), tmux + TPM
 - **Shell**: Zsh + Starship prompt

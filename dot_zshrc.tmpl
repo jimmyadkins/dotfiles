@@ -59,7 +59,7 @@ if [[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 # ──────── Aliases ────────
-alias v="nvim"
+alias v="zed"
 alias lg="lazygit"
 alias cl="clear"
 alias c="claude"
@@ -145,6 +145,11 @@ fi
 # Local secrets (not tracked by chezmoi)
 if [[ -f "$HOME/.secrets.env" ]]; then
   source "$HOME/.secrets.env"
+fi
+
+# libpq client tools (psql etc.), installed keg-only by Homebrew
+if command -v brew &> /dev/null && [[ -d "$(brew --prefix)/opt/libpq/bin" ]]; then
+  export PATH="$(brew --prefix)/opt/libpq/bin:$PATH"
 fi
 
 # ┌─────────────────────────────────────────┐

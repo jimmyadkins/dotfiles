@@ -31,5 +31,5 @@ git:
     - colorArg: always
       externalDiffCommand: difft --color=always
 os:
-  editPreset: "nvim-remote"
+  editPreset: "zed"
   copyToClipboardCmd: "echo -n '{{text}}' | pbcopy"
